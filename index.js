@@ -5,8 +5,12 @@ app.get('/', (req,res) => {
    res.send('Hello World');
 });
 
-app.get('/what', (req,res) => {
-   res.send('What is your name?');
+app.get('/getUser', (req,res) => {
+   res.send({
+      username: "Adamu tako",
+      mobileNumber: 90877886
+   });
 });
+
 
 app.listen(3000, () => console.log('listenning on port 3000...'));
