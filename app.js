@@ -1,10 +1,28 @@
 
-const os = require('os');
+const express = require('express');
+const bodyParser = require('body-parser');
 
-var totalMemory = os.totalmem();
-var freeMemory = os.freemem();
+const app = express();
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(bodyParser.json());
 
-//console.log('Total Memory:' + totalMemory);
+// Endpoint for user registration
+app.post('/register', (req, res) => {
+  const { username, password } = req.body;
 
-console.log(`Total Memory: ${totalMemory}`);
-console.log(`Free Memory: ${freeMemory}`);
+  // Validate username and password
+  if (!username || !password) {
+    return res.status(400).json({ error: 'invalid login credentials' });
+  }
+  
+  // Perform additional validation if needed
+
+  // Registration successful
+  res.json({ message: 'Registration successful' });
+});
+
+// Start the server
+const port = 3000;
+app.listen(port, () => {
+  console.log(`Server running on port ${port}`);
+});

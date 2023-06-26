@@ -1,17 +1,24 @@
+const express = require('express');
+const app = express();
+const port = 3000;
 
-const http = require("http");
-
-const Server = http.createServer((req, res) => { if (req.url === '/') 
-res.write('id:1, name: "full name", age:21, date joined: 2023-06-15');
-res.end();
-
- if (req.url === '/users'){
-  res.write(JSON.stringify(['id:1, name: "full name", age:21, date joined: 2023-06-15']))}
+// Define a route for handling login requests
+app.post('/login', (req, res) => {
+  // Add your login validation logic here
 });
-Server.listen(3310);
-console.log('Listening on port 3310...');
 
-              
+// Start the server
+app.listen(port, () => {
+  console.log(`Server running on http://localhost:${port}`);
+});
 
+app.post('/login', (req, res) => {
+  const { username, password } = req.body;
 
-  
+  // Check if the username and password match
+  if (username === 'isah20064u@gmail.com' && password === '12345678') {
+    res.status(200).send('Login successful!');
+  } else {
+    res.status(400).send('Invalid login credentials');
+  }
+});
