@@ -1,9 +1,8 @@
 const express = require('express');
-const bodyParser = require('body-parser');
 
 const app = express();
-bodyParser.urlencoded({extended: false})
-app.use(bodyParser.json())
+app.use(express.urlencoded({extended: false}))
+app.use(express.json())
 
 app.get('/', (req,res) => {
    res.send('Hello World');
@@ -21,5 +20,22 @@ app.post('/addUser', (req, res) => {
    res.send(form);
 });
 
+// Endpoint for user registration
+app.post('/login', (req, res) => {
+   const { username, password } = req.body;
+ 
+   // Validate username and password
+   if (username === 'isah20064u@gmail.com' && password === '12345678') {
+   //  return res.status(200).send('Login successful!');
+     res.status(200).send('Login successful!');
+   } else {
+     res.status(400).send('Invalid login credentials');
+   }
+   
+   // Perform additional validation if needed
+ 
+   // Registration successful
+   // res.json({ message: 'Registration successful' });
+ });
 
 app.listen(3000, () => console.log('listenning on port 3000...'));

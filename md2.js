@@ -11,7 +11,7 @@ function validateUsername(username) {
   }
   
   // Example usage
-  const username = "myusername";
+  const username = "isah20064u";
   const password = "MyP@ssw0rd";
   
   if (validateUsername(username)) {
